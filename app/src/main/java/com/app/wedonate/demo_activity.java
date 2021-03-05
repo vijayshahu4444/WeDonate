@@ -1,4 +1,4 @@
-package com.app.wedonate;
+package com.app.wedonate2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
