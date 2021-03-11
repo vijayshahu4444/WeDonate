@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         android:text="Gender"
         android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
 
     <RadioButton
         android:layout_width="wrap_content"
@@ -130,6 +130,17 @@
         android:textSize="20sp"/>
 
 </RadioGroup>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:checked="true"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:text="Become Donor">
+
+    </CheckBox>
 
     <Button
         android:id="@+id/btn_register"
@@ -139,7 +150,7 @@
         android:layout_height="wrap_content"
         android:text="Register"
         android:textSize="20sp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:textColor="@color/white"
         android:background="@drawable/button_rounded" />
 

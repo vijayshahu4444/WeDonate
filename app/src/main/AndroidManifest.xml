@@ -9,15 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wedonate">
-        <activity android:name=".Signup_form"></activity>
-        <activity android:name=".Login_form">
+       <activity android:name=".SplashScreen">
+
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
-        </activity>
-        <activity android:name=".MainActivity"/>
+    </activity>
+        <activity android:name=".Home_Page" />
+        <activity android:name=".Signup_form" />
+        <activity android:name=".Login_form"/>
+
+
+
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
