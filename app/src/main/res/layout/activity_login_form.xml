@@ -40,6 +40,7 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="10dp"
+        app:passwordToggleEnabled="true"
         android:focusableInTouchMode="true">
 
         <EditText
@@ -47,7 +48,7 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:ems="10"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textSize="18dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
