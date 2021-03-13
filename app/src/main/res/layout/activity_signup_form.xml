@@ -20,6 +20,7 @@
         android:focusableInTouchMode="true">
 
         <EditText
+            android:id="@+id/fname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint=" First Name"
@@ -38,6 +39,7 @@
         android:layout_marginTop="10dp">
 
         <EditText
+            android:id="@+id/lname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint=" Last Name"
@@ -56,11 +58,12 @@
         android:layout_marginTop="10dp">
 
         <EditText
+            android:id="@+id/phonenum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email "
+            android:hint="Mobile Number "
             android:ems="10"
-            android:inputType="text"
+            android:inputType="number"
             android:textSize="18dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,11 +77,12 @@
         android:layout_marginTop="10dp">
 
         <EditText
+            android:id="@+id/createPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Create Password"
             android:ems="10"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,11 +96,12 @@
         android:layout_marginRight="5dp">
 
         <EditText
+            android:id="@+id/confPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm Password"
             android:ems="10"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -116,6 +121,7 @@
         android:textSize="20sp" />
 
     <RadioButton
+        android:id="@+id/RbtnM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Male"
@@ -123,6 +129,7 @@
         android:layout_marginRight="10sp"
         android:textSize="20sp"/>
     <RadioButton
+        android:id="@+id/RbtnF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -131,6 +138,7 @@
 
 </RadioGroup>
     <CheckBox
+        android:id="@+id/DonorAgree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
