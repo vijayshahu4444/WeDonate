@@ -21,11 +21,11 @@ public class Signup_form extends AppCompatActivity {
        EditText fname, lname,phonenum, createPass, confPass ;
        RadioButton RbtnM, RbtnF;
        CheckBox DonorAgree;
-       Button btn_register;
+       Button btn_Submit;
 
-       //Create Databse refrance
+      // Create Databse refrance
     FirebaseDatabase rootNode;
-    DatabaseReference databaseRegistraion;
+    DatabaseReference reference;
 
 
 
@@ -36,12 +36,13 @@ public class Signup_form extends AppCompatActivity {
 
         //geting the databse refrance
 
-        databaseRegistraion = FirebaseDatabase.getInstance().getReference("User");
+        reference = FirebaseDatabase.getInstance().getReference("User");
 
 
         //get all the variable from the xml sinup file
         fname = (EditText) findViewById(R.id.fname);
         lname = (EditText) findViewById(R.id.lname);
+        btn_Submit = findViewById(R.id.btn_submit);
         phonenum = (EditText) findViewById(R.id.phonenum);
         createPass = (EditText) findViewById(R.id.createPass);
         confPass = (EditText) findViewById(R.id.confPass);
@@ -50,50 +51,42 @@ public class Signup_form extends AppCompatActivity {
         DonorAgree = (CheckBox) findViewById(R.id.DonorAgree);
 
 
-        btn_register.setOnClickListener(new View.OnClickListener() {
+        btn_Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //after cliccking submit it should gos to the database
-                addRegister();
+
+
+                String Fname = fname.getText().toString().trim();
+                String Lname = lname.getText().toString().trim();
+                String number = phonenum.getText().toString().trim();
+                String crpass = createPass.getText().toString().trim();
+                String conpass = confPass.getText().toString().trim();
+
+               /* if(!TextUtils.isEmpty(Fname)){
+                    //pushing the value into the firebase
+                    String id =  reference.push().getKey();
+                    UserRegister User = new UserRegister();
+
+                }else {
+                    Toast.makeText(this, "Please Enter the name", Toast.LENGTH_LONG).show();
+                }*/
+
+                //calling a root node is firebase and refrance is databse refrance
+                rootNode = FirebaseDatabase.getInstance();
+                //user is the path of database
+                reference = rootNode.getReference("user");
+                //pushing the value into database
+                reference.setValue("Database connectivity chk");
+
+
+
 
             }
         });
 
 
-    }
-    private void addRegister (){
-        String Fname = fname.getText().toString().trim();
-        String Lname = lname.getText().toString().trim();
-        String number = phonenum.getText().toString().trim();
-        String crpass = createPass.getText().toString().trim();
-        String conpass = confPass.getText().toString().trim();
-
-        if(!TextUtils.isEmpty(Fname)){
-            //pushing the value into the firebase
-            String id =  databaseRegistraion.push().getKey();
-
-
-        }else {
-            Toast.makeText(this, "Please Enter the name", Toast.LENGTH_LONG).show();
-        }
-
-        if(!TextUtils.isEmpty(Lname)){
-
-        }else {
-            Toast.makeText(this, "Please Enter the name", Toast.LENGTH_LONG).show();
-        }
-
-        if(!TextUtils.isEmpty(number)){
-
-        }else {
-            Toast.makeText(this, "Please Enter the Number", Toast.LENGTH_LONG).show();
-        }
-
-        if(!TextUtils.isEmpty(crpass) && crpass == conpass){
-
-        }else {
-            Toast.makeText(this, "Please Re-Enter the Password", Toast.LENGTH_LONG).show();
-        }
 
     }
+
 }

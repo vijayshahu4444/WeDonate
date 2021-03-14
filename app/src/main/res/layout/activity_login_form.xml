@@ -64,7 +64,7 @@
         android:textColor="@color/white"
         android:background="@drawable/button_rounded" />
     <Button
-
+        android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
@@ -73,8 +73,7 @@
         android:textSize="20sp"
         android:layout_marginTop="10dp"
         android:textColor="@color/white"
-        android:onClick="btn_register"
-        android:background="@drawable/button_rounded" />
+                android:background="@drawable/button_rounded" />
 
 
 </LinearLayout>
