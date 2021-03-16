@@ -6,8 +6,8 @@ public class UserRegister {
     String userID;
     String f_Name;
     String l_Name;
-    Number Mobile;
-    String password;
+    String Phone;
+    String passwod;
     CheckBox M;
     CheckBox F;
 
@@ -15,12 +15,12 @@ public class UserRegister {
 
     }
 
-    public UserRegister(String userID, String f_Name, String l_Name, Number mobile, String password, CheckBox m, CheckBox f) {
+    public UserRegister(String userID, String f_Name, String l_Name, String Phone, String passwod, CheckBox m, CheckBox f) {
         this.userID = userID;
         this.f_Name = f_Name;
         this.l_Name = l_Name;
-        Mobile = mobile;
-        this.password = password;
+        this.Phone = Phone;
+        this.passwod = passwod;
         M = m;
         F = f;
     }
@@ -49,20 +49,20 @@ public class UserRegister {
         this.l_Name = l_Name;
     }
 
-    public Number getMobile() {
-        return Mobile;
+    public String getPhone() {
+        return Phone;
     }
 
-    public void setMobile(Number mobile) {
-        Mobile = mobile;
+    public void setPhone(String phone) {
+        Phone = phone;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPasswod() {
+        return passwod;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPasswod(String passwod) {
+        this.passwod = passwod;
     }
 
     public CheckBox getM() {
