@@ -6,7 +6,6 @@
         android:id="@+id/search_button"
         android:title=""
         android:icon="@drawable/ic_baseline_search_24"
-
         app:showAsAction="always"/>
 
 </menu>

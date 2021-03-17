@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/background"
     tools:context=".Home_Page">
     
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         app:title="@string/app_name"
         app:titleTextColor="@color/white"
-        android:background="@color/red"
+        android:background="@color/colorPrimary"
         app:menu="@menu/search_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -52,14 +52,15 @@
         android:id="@+id/recylerView"
         android:layout_below="@+id/linearLayout"
         android:layout_above="@+id/make_request_button"
+        android:background="@color/background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <TextView
+    <Button
         android:id="@+id/make_request_button"
         android:text="Make Request"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/button_rounded"
         android:textColor="@android:color/white"
         android:padding="16dp"
         android:layout_alignParentBottom="true"
