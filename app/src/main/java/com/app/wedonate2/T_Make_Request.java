@@ -24,7 +24,7 @@ public class T_Make_Request extends AppCompatActivity implements AdapterView.OnI
         spinner.setOnItemSelectedListener(this);
 
 
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,R.array.Blood, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,R.array.city, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
         spinner2.setOnItemSelectedListener(this);
@@ -36,7 +36,7 @@ public class T_Make_Request extends AppCompatActivity implements AdapterView.OnI
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
+//        Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
 
 
     }
