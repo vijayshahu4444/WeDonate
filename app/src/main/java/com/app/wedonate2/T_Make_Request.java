@@ -6,15 +6,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 public class T_Make_Request extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    Button submit_req;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make__request);
+        submit_req = findViewById(R.id.submit_req);
+
 
         Spinner spinner = findViewById(R.id.spinner_bloodgrp);
         Spinner spinner2 = findViewById(R.id.spinner_city);
@@ -33,11 +37,12 @@ public class T_Make_Request extends AppCompatActivity implements AdapterView.OnI
 
     }
 
+
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
-//        Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
-
+//       Toast.makeText(parent.getContext(),text,Toast.LENGTH_SHORT).show();
 
     }
 
@@ -45,6 +50,8 @@ public class T_Make_Request extends AppCompatActivity implements AdapterView.OnI
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+
 
 
 

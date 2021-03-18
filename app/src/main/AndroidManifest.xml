@@ -22,7 +22,7 @@
         <activity android:name=".Home_Page" />
         <activity android:name=".Signup_form" />
         <activity android:name=".Login_form" />
-        <activity android:name=".MainActivity" />
+
     </application>
 
 </manifest>
