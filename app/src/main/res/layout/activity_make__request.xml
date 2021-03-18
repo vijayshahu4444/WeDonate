@@ -64,9 +64,9 @@
                 android:layout_gravity="center_vertical" />
 
             <Spinner
+                android:id="@+id/spinner_bloodgrp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinner_bloodgrp"
                 android:spinnerMode="dialog"
                 android:layout_gravity="center_vertical" />
 
@@ -88,9 +88,9 @@
                 android:layout_gravity="center_vertical" />
 
             <Spinner
+                android:id="@+id/spinner_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinner_city"
                 android:spinnerMode="dialog"
                 android:layout_gravity="center_vertical" />
 

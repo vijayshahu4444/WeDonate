@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">Wedonate</string>
-    <string name="tanvi">Tanvi</string>
+
+    <string-array name="Blood">
+        <item>A +</item>
+        <item>O -</item>
+        <item>B +</item>
+        <item>AB +</item>
+        <item>A -</item>
+        <item>O -</item>
+        <item>B -</item>
+        <item>AB -</item>
+    </string-array>
+    <string-array name="city">
+        <item>Pune</item>
+        <item>Mumbai</item>
+        <item>Delhi</item>
+
+    </string-array>
+
 </resources>
