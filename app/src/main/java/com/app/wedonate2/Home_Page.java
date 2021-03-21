@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 
 public class Home_Page extends AppCompatActivity {
+    String phone;
+    String phone2;
 
 
 
@@ -20,10 +22,25 @@ public class Home_Page extends AppCompatActivity {
         Button button = findViewById(R.id.make_request_button);
         Toolbar toolbar =   findViewById(R.id.toolbar);
 
+        if(getIntent().getStringExtra("mobile")!= null){
+             phone = getIntent().getStringExtra("mobile");
+
+        }
+        else {
+             phone2 = getIntent().getStringExtra("mobile_ret");
+        }
+
+
+
+        System.out.println("Mobile "+phone);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Home_Page.this,T_Make_Request.class));
+                Intent intent = (new Intent(Home_Page.this,T_Make_Request.class));
+                intent.putExtra("mobile",phone);
+                intent.putExtra("mobile2",phone2);
+                startActivity(intent);
             }
         });
 

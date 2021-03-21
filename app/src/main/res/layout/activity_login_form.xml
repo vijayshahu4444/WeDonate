@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="phone"
+            android:text="9999999999"
             android:ems="10"
             android:inputType="text"
             android:textSize="18dp" />
@@ -49,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
+            android:text="9999999999"
             android:ems="10"
             android:inputType="textPassword"
             android:textSize="18dp" />

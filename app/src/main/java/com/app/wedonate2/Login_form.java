@@ -75,7 +75,10 @@ public class Login_form extends AppCompatActivity {
                                 if(userRegister.getPhone().equals(phone)){
                                     if(userRegister.getPasswod().equals(password)){
                                         Toast.makeText(Login_form.this, "Login successful", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(Login_form.this,Home_Page.class));
+                                        Intent intent = (new Intent(Login_form.this,Home_Page.class));
+                                        intent.putExtra("mobile",phone);
+                                        startActivity(intent);
+
                                         finish();
                                     }else{
                                         Toast.makeText(Login_form.this, "Credential mismatch", Toast.LENGTH_SHORT).show();
