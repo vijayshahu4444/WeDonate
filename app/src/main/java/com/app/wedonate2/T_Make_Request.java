@@ -31,7 +31,7 @@ public class T_Make_Request extends AppCompatActivity  {
     DatabaseReference reference;
     Spinner spinner_bloodgrp;
     Spinner spinner_city;
-   public String text;
+   private static String text,text2;
     SpinnerHelper helper;
     String phone;
 
@@ -91,51 +91,14 @@ public class T_Make_Request extends AppCompatActivity  {
 
 
           spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-              private String text;
+
 
               @Override
               public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                 String text = parent.getItemAtPosition(position).toString();
-
-                  submit_req.setOnClickListener(new View.OnClickListener() {
-                      @Override
-                      public void onClick(View v) {
-                          //push reqest into the firebase
+                  text = parent.getItemAtPosition(position).toString();
 
 
-                          reference.addListenerForSingleValueEvent(new ValueEventListener() {
-                              @Override
-                              public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                  if(!snapshot.child("Blood_Request").child(phone).exists()){
-                                      HashMap<String,Object> userdatamap =new HashMap<>();
-                                      userdatamap.put("Blood Group",text);
-                                      reference.child("Blood_Request").child(phone).updateChildren(userdatamap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                          @Override
-                                          public void onComplete(@NonNull Task<Void> task) {
-                                              if(task.isSuccessful()){
-                                                  Intent intent = new Intent(T_Make_Request.this,Home_Page.class);
-                                                  intent.putExtra("mobile_ret",phone);
-                                                  startActivity(intent);
-                                              }
-                                          }
-                                      });
-                                  }
-
-                              }
-
-                              @Override
-                              public void onCancelled(@NonNull DatabaseError error) {
-                                  Toast.makeText(T_Make_Request.this, "Failed to register", Toast.LENGTH_SHORT).show();
-
-                              }
-                          });
-
-
-
-
-                      }
-                  });
 
 
 
@@ -147,53 +110,15 @@ public class T_Make_Request extends AppCompatActivity  {
 
               }
           });
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            private String text;
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                String text = parent.getItemAtPosition(position).toString();
-
-                submit_req.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //push reqest into the firebase
+                text2 = parent.getItemAtPosition(position).toString();
 
 
-                        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                if(!snapshot.child("Blood_Request").child(phone).exists()){
-                                    HashMap<String,Object> userdatamap =new HashMap<>();
-                                    userdatamap.put("Blood Group",text);
-                                    reference.child("Blood_Request").child(phone).updateChildren(userdatamap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if(task.isSuccessful()){
-                                                Intent intent = new Intent(T_Make_Request.this,Home_Page.class);
-                                                intent.putExtra("mobile_ret",phone);
-                                                startActivity(intent);
-                                            }
-                                        }
-                                    });
-                                }
-
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                                Toast.makeText(T_Make_Request.this, "Failed to register", Toast.LENGTH_SHORT).show();
-
-                            }
-                        });
-
-
-
-
-                    }
-                });
 
 
 
@@ -205,7 +130,46 @@ public class T_Make_Request extends AppCompatActivity  {
 
             }
         });
+        submit_req.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //push reqest into the firebase
 
+
+                reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        HashMap<String,Object> userdatamap =new HashMap<>();
+                        userdatamap.put("Blood Group",text);
+                        userdatamap.put("City",text2);
+                        reference.child("Blood_Request").child(phone).updateChildren(userdatamap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    Intent intent = new Intent(T_Make_Request.this,Home_Page.class);
+                                    intent.putExtra("mobile_ret",phone);
+                                    startActivity(intent);
+                                }
+                            }
+                        });
+
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(T_Make_Request.this, "Failed to register", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+
+
+
+            }
+        });
+
+System.out.print("this is the local variable value" + text);
 
     }
 
