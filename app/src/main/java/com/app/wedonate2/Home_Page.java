@@ -50,9 +50,10 @@ public class Home_Page extends AppCompatActivity implements NavigationView.OnNav
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
         //to make menu clickable
         navigationView.setNavigationItemSelectedListener(this);
+        //to set the default home to navigation
+        navigationView.setCheckedItem(R.id.nav_home);
 
 
         if(getIntent().getStringExtra("mobile")!= null){
@@ -91,18 +92,38 @@ public class Home_Page extends AppCompatActivity implements NavigationView.OnNav
         });
     }
 
-
+    private static final int TIME_DELAY = 2000;
+    private static long back_pressed;
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)){
-            drawerLayout.closeDrawer(GravityCompat.START);
+
+        // this code is not working insted of clossing drawer it closed the app
+        if (this.drawerLayout.isDrawerOpen(GravityCompat.START)){
+            this.drawerLayout.closeDrawer(GravityCompat.START);
         }
+        else
 
         super.onBackPressed();
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.nav_home:
+                break;
+            case R.id.nav_admin:
+                Intent intent = new Intent(Home_Page.this,Admin_login.class);
+                startActivity(intent);
+                break;
+            case R.id.nav_logout:
+                Intent intent1 = new Intent(Home_Page.this,Login_form.class);
+                startActivity(intent1);
+                break;
+        }
+
+        //if any actinon is selected close the drower
+        drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
 }
