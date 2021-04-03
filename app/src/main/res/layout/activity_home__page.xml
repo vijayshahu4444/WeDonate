@@ -31,7 +31,7 @@
         android:id="@+id/toolbar"
         app:title="@string/app_name"
         app:titleTextColor="@color/white"
-        android:background="@color/colorPrimary"
+        android:background="@color/teal_700"
         app:menu="@menu/search_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -60,22 +60,8 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/teal_700"
-        app:menu="@menu/search_menu"
 
 
-        app:titleTextColor="@android:color/white"
-        tools:ignore="DuplicateIds" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/nav_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:navigationIcon="@drawable/menu_icon"/>
 
 
     <androidx.recyclerview.widget.RecyclerView
