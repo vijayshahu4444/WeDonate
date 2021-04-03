@@ -41,7 +41,7 @@
 
                 <item
                     android:id="@+id/nav_profile"
-                    android:icon="@drawable/logout_ico"
+                    android:icon="@drawable/user_icon"
                     android:title="Profile" />
 
                 <item
