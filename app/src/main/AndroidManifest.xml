@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wedonate">
-
+        <activity android:name=".Admin_login"></activity>
         <activity android:name=".T_Make_Request" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".SplashScreen">
@@ -22,7 +22,6 @@
         <activity android:name=".Home_Page" />
         <activity android:name=".Signup_form" />
         <activity android:name=".Login_form" />
-
     </application>
 
 </manifest>

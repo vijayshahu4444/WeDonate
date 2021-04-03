@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_admin"
+            android:icon="@drawable/admin_icon"
+            android:title="Admin" />
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_icon"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_donor_find"
+            android:icon="@drawable/home_icon"
+            android:title="Doner" />
+
+        <item
+            android:id="@+id/nav_blood_bank"
+            android:icon="@drawable/blood_bank_icon"
+            android:title="Find Blood Bank" />
+
+        <item
+            android:id="@+id/nav_find_reciver"
+            android:icon="@drawable/user_icon"
+            android:title="Find Reciver" />
+
+
+    </group>
+
+
+    <group android:checkableBehavior="single">
+
+        <item android:title="Profile">
+
+            <menu>
+
+
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/logout_ico"
+                    android:title="Profile" />
+
+                <item
+                    android:id="@+id/btn_logout"
+                    android:icon="@drawable/logout_ico"
+                    android:title="Log out" />
+
+
+            </menu>
+        </item>
+    </group>
+
+
+</menu>
