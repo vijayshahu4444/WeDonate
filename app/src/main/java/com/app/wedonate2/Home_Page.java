@@ -1,7 +1,6 @@
 package com.app.wedonate2;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -112,14 +111,21 @@ public class Home_Page extends AppCompatActivity implements NavigationView.OnNav
         switch (item.getItemId()){
             case R.id.nav_home:
                 break;
-            case R.id.nav_admin:
-                Intent intent = new Intent(Home_Page.this,Admin_login.class);
+            case R.id.nav_admin_bb:
+                Intent intent = new Intent(Home_Page.this, Blood_Bank.class);
                 startActivity(intent);
                 break;
-            case R.id.nav_logout:
-                Intent intent1 = new Intent(Home_Page.this,Login_form.class);
+            case R.id.nav_admin_chat:
+                Intent intent1 = new Intent(Home_Page.this, Chat.class);
                 startActivity(intent1);
                 break;
+            case R.id.nav_logout:
+                Intent intent2 = new Intent(Home_Page.this,Login_form.class);
+                startActivity(intent2);
+                break;
+            case R.id.nav_donor_find:
+                Intent intent3 = new Intent(Home_Page.this,FindDonor.class);
+                startActivity(intent3);
         }
 
         //if any actinon is selected close the drower

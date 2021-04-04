@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/nav_bottom_chat"
+        android:title="Chat"
+        android:icon="@drawable/chat_icon" />
+
+    <item
+        android:id="@+id/nav_bottom_new_chat"
+        android:title="New Message"
+        android:icon="@drawable/new_chat_icon"/>
+
+
+
+
+</menu>

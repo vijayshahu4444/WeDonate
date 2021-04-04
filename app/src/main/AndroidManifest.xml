@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Wedonate">
-        <activity android:name=".Admin_login"></activity>
+        <activity android:name=".FindDonor"></activity>
+        <activity android:name=".Chat" />
+        <activity android:name=".Blood_Bank" />
         <activity android:name=".T_Make_Request" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".SplashScreen">
