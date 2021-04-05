@@ -42,7 +42,6 @@ public class Signup_form extends AppCompatActivity {
 
 
     // Create Databse refrance
-  //  FirebaseDatabase rootNode;
     DatabaseReference reference;
 
     @Override

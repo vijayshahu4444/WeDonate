@@ -11,6 +11,9 @@ public class UserRegister {
     CheckBox M;
     CheckBox F;
 
+    //this is for reqest address
+    String address;
+
     public UserRegister(){
 
     }
@@ -79,5 +82,13 @@ public class UserRegister {
 
     public void setF(CheckBox f) {
         F = f;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

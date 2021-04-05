@@ -5,9 +5,21 @@
     android:layout_height="match_parent"
     android:background="@color/background">
 
+    <TextView
+        android:id="@+id/bld_req"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_700"
+        android:text="Request Blood"
+        android:textAlignment="center"
+        android:padding="5dp"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
     <RelativeLayout
         android:layout_height="match_parent"
         android:layout_width="match_parent"
+        android:layout_below="@+id/bld_req"
         android:layout_margin="16dp">
 
         <LinearLayout
@@ -81,6 +93,7 @@
             android:layout_marginTop="10dp">
 
             <TextView
+
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -94,14 +107,36 @@
                 android:spinnerMode="dialog"
                 android:layout_gravity="center_vertical" />
 
+
+
         </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout4"
+            android:focusable="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:focusableInTouchMode="true">
+
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Enter the Address  "
+                android:ems="10"
+                android:inputType="text"
+                android:textSize="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/submit_req"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Submit Request"
-            android:layout_below="@+id/linearLayout4"
+            android:layout_below="@+id/input_layout"
             android:layout_marginTop="30dp"
             android:background="@color/colorPrimary"
             android:textColor="@color/white"

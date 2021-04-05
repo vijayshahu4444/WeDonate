@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -34,6 +35,8 @@ public class T_Make_Request extends AppCompatActivity  {
    private static String text,text2;
     SpinnerHelper helper;
     String phone;
+    EditText address;
+
 
 
 
@@ -44,6 +47,7 @@ public class T_Make_Request extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_make__request);
         submit_req = findViewById(R.id.submit_req);
+        address = findViewById(R.id.address);
         helper = new SpinnerHelper();
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
@@ -133,6 +137,14 @@ public class T_Make_Request extends AppCompatActivity  {
         submit_req.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //get address from the helper
+
+                String Address = address.getText().toString().trim();
+
+
+
+
                 //push reqest into the firebase
 
 
@@ -142,6 +154,7 @@ public class T_Make_Request extends AppCompatActivity  {
                         HashMap<String,Object> userdatamap =new HashMap<>();
                         userdatamap.put("Blood Group",text);
                         userdatamap.put("City",text2);
+                        userdatamap.put("Address",Address);
                         reference.child("Blood_Request").child(phone).updateChildren(userdatamap).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
