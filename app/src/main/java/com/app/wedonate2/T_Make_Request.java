@@ -152,7 +152,7 @@ public class T_Make_Request extends AppCompatActivity  {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         HashMap<String,Object> userdatamap =new HashMap<>();
-                        userdatamap.put("Blood Group",text);
+                        userdatamap.put("Blood_Group",text);
                         userdatamap.put("City",text2);
                         userdatamap.put("Address",Address);
                         reference.child("Blood_Request").child(phone).updateChildren(userdatamap).addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -25,8 +25,6 @@
     android:background="@color/background"  >
 
 
-
-    
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         app:title="@string/app_name"
@@ -36,18 +34,13 @@
         android:layout_height="wrap_content"/>
 
 
-
-
-
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recylerView"
-        android:layout_below="@+id/linearLayout"
+    <ListView
+        android:id="@+id/listView"
+        android:layout_below="@+id/toolbar"
         android:layout_above="@+id/make_request_button"
         android:background="@color/background"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"/>
 
     <Button
         android:id="@+id/make_request_button"
