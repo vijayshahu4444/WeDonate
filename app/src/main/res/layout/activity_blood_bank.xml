@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,6 +8,7 @@
     tools:context=".Blood_Bank">
 
     <TextView
+        android:id="@+id/AdminSec"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/teal_700"
@@ -17,10 +18,53 @@
         android:textColor="@android:color/white"
         android:textSize="24sp" />
 
+    <TextView
+        android:id="@+id/one"
+        android:layout_below="@+id/AdminSec"
+        android:layout_width="wrap_content"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="The blood stores in the form of packets The capacity of 1 packet is 500 ml"/>
+
+    <TextView
+        android:id="@+id/two"
+        android:layout_below="@+id/one"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blood Packets"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+    <ListView
+        android:id="@+id/listViewBloodBanck"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnUpdate"
+        android:layout_below="@+id/two"/>
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentBottom="true"
+        android:text="update"
+        android:textSize="20sp"/>
 
 
 
 
 
 
-</LinearLayout>
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
