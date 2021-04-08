@@ -13,12 +13,17 @@
         <item>B -</item>
         <item>AB -</item>
     </string-array>
+
     <string-array name="city">
         <item>Pune</item>
         <item>Mumbai</item>
         <item>Delhi</item>
-
+        <item>Rajasthan</item>
+        <item>Ahemdabad</item>
+        <item>Vadodara</item>
+        <item>Surat</item>
     </string-array>
+
     <string-array name="packets">
         <item>1</item>
         <item>2</item>
@@ -50,11 +55,7 @@
         <item>28</item>
         <item>29</item>
         <item>30</item>
-
-
     </string-array>
-
-
 
 
     <!-- TODO: Remove or change this placeholder text -->

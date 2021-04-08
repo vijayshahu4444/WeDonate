@@ -186,6 +186,12 @@ public class Home_Page extends AppCompatActivity implements NavigationView.OnNav
             case R.id.nav_donor_find:
                 Intent intent3 = new Intent(Home_Page.this, FindDonor.class);
                 startActivity(intent3);
+                break;
+
+            case R.id.nav_blood_bank:
+                Intent intent4 = new Intent(Home_Page.this, FindBloodBank.class);
+                startActivity(intent4);
+                break;
         }
 
         //if any actinon is selected close the drower
