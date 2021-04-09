@@ -36,8 +36,8 @@ public class Home_Page extends AppCompatActivity implements NavigationView.OnNav
     ListView myListView;
     FirebaseDatabase database;
     DatabaseReference ref;
-    ArrayList<String> list;
-    ArrayAdapter<String> adapter;
+    ArrayList<User> list;
+    ArrayAdapter<User> adapter;
     User user;
 
 
@@ -67,7 +67,7 @@ public class Home_Page extends AppCompatActivity implements NavigationView.OnNav
 
 
          list = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(this,R.layout.user_info,R.id.userInfo, list);
+        adapter = new ArrayAdapter<User>(this,R.layout.user_info,R.id.userInfo, list);
 
 
 
@@ -81,10 +81,9 @@ public class Home_Page extends AppCompatActivity implements NavigationView.OnNav
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for (DataSnapshot ds: snapshot.getChildren()){
-                    String a = ds.getValue(String.class);
 
                     user = ds.getValue(User.class);
-                    list.add(a);
+                    list.add(user);
                 }
 
                myListView.setAdapter(adapter);
