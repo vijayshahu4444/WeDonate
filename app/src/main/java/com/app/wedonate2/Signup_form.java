@@ -156,8 +156,10 @@ public class Signup_form extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                Intent intent = new Intent(Signup_form.this,Login_form.class);
+                                Intent intent = new Intent(Signup_form.this,Donar_Detail.class);
+                                intent.putExtra("sinup","111");
                                 startActivity(intent);
+
                             }
                         }
                     });

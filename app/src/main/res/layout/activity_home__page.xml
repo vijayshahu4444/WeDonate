@@ -8,7 +8,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Home_Page"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    tools:openDrawer="end">
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
@@ -34,13 +34,50 @@
         android:layout_height="wrap_content"/>
 
 
+    <Button
+        android:id="@+id/notext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/listView"
+        android:layout_below="@+id/toolbar"
+        android:layout_alignParentEnd="true"
+
+        android:layout_marginBottom="0dp"
+        android:text="NO"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/you_are"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/listView"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toEndOf="@+id/yestext"
+        android:text="Do you want to Donate blood?"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/yestext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_alignParentStart="true"
+
+
+        android:text="YES"
+        android:textSize="25dp" />
+
     <ListView
         android:id="@+id/listView"
-        android:layout_below="@+id/toolbar"
-        android:layout_above="@+id/make_request_button"
-        android:background="@color/background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_above="@+id/make_request_button"
+        android:layout_below="@+id/yestext"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="54dp"
+        android:background="@color/background" />
 
     <Button
         android:id="@+id/make_request_button"

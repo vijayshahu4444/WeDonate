@@ -1,9 +1,13 @@
 package com.app.wedonate2;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -22,7 +26,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 public class Login_form extends AppCompatActivity {
     //Variables
@@ -31,6 +38,11 @@ public class Login_form extends AppCompatActivity {
     ProgressBar progressBar;
     FirebaseAuth fauth;
     DatabaseReference reference;
+    FirebaseDatabase database;
+    DatabaseReference ref, ref2,ref3;
+    Session sessionManager;
+
+
     
 
     @Override
@@ -38,12 +50,20 @@ public class Login_form extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_form);
         mphonne = findViewById(R.id.l_phone);
+
         mPassword = findViewById(R.id.l_pass);
         mLogin_btn = findViewById(R.id.btn_login);
         progressBar = findViewById(R.id.progressBar);
         Button b_reg = findViewById(R.id.btn_register);
         fauth = FirebaseAuth.getInstance();
         reference = FirebaseDatabase.getInstance().getReference();
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference("Blood_Request");
+        ref2 = database.getReference("DonarDetail");
+
+
+
+
 
         mLogin_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,11 +95,34 @@ public class Login_form extends AppCompatActivity {
                                 if(userRegister.getPhone().equals(phone)){
                                     if(userRegister.getPasswod().equals(password)){
                                         Toast.makeText(Login_form.this, "Login successful", Toast.LENGTH_SHORT).show();
-                                        Intent intent = (new Intent(Login_form.this,Home_Page.class));
-                                        intent.putExtra("mobile",phone);
-                                        startActivity(intent);
+                                        ref2.child(phone).addListenerForSingleValueEvent(new ValueEventListener() {
+                                            @Override
+                                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                String a = (String) snapshot.child("City").getValue().toString();
+                                                String b = (String) snapshot.child("Blood").getValue().toString();
+                                                String c = (String) snapshot.child("WillDonate").getValue().toString();
+                                                sessionManager = new Session(getApplicationContext());
+                                              sessionManager.createLoginSession(a,b,c);
+                                              System.out.println(a+b+c);
+                                                Intent intent = (new Intent(Login_form.this,Home_Page.class));
+                                                intent.putExtra("mobile",phone);
+                                                startActivity(intent);
 
-                                        finish();
+                                                finish();
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                            }
+                                        });
+
+
+
+
+
+
+
                                     }else{
                                         Toast.makeText(Login_form.this, "Credential mismatch", Toast.LENGTH_SHORT).show();
                                         progressBar.setVisibility(View.INVISIBLE);
@@ -110,6 +153,13 @@ public class Login_form extends AppCompatActivity {
                 startActivity(new Intent(Login_form.this,Signup_form.class));
             }
         });
+
+
+
+
+
+
+
     }
 
 

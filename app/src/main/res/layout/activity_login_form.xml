@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background"
-    android:padding="30dp"
-    tools:context=".Login_form">
-    
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Login_form">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background"
+        android:orientation="vertical"
+        android:padding="30dp"
+        >
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -19,73 +25,79 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="true"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="5dp"
+        android:focusable="true"
         android:focusableInTouchMode="true">
 
         <EditText
             android:id="@+id/l_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="phone"
-            android:text="9999999999"
             android:ems="10"
+            android:hint="phone"
             android:inputType="text"
+            android:text="9999999999"
             android:textSize="18dp" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:focusable="true"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:layout_marginTop="10dp"
-        app:passwordToggleEnabled="true"
-        android:focusableInTouchMode="true">
+        android:layout_marginRight="5dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:passwordToggleEnabled="true">
 
         <EditText
             android:id="@+id/l_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
-            android:text="9999999999"
             android:ems="10"
+            android:hint="Password"
             android:inputType="textPassword"
+            android:text="9999999999"
             android:textSize="18dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:textSize="20sp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="20dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/button_rounded"
+        android:text="Login"
         android:textColor="@color/white"
-        android:background="@drawable/button_rounded" />
+        android:textSize="20sp" />
+
     <Button
         android:id="@+id/btn_register"
         android:layout_width="match_parent"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/button_rounded"
         android:text="signup"
-        android:textSize="20sp"
-        android:layout_marginTop="10dp"
         android:textColor="@color/white"
-                android:background="@drawable/button_rounded" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_marginTop="10dp"
-        android:visibility="invisible"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:textSize="20sp" />
 
 
-</LinearLayout>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible" />
+
+
+
+
+    </LinearLayout>
+    </ScrollView>

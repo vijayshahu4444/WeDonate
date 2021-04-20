@@ -103,9 +103,6 @@ public class T_Make_Request extends AppCompatActivity  {
                   text = parent.getItemAtPosition(position).toString();
 
 
-
-
-
               }
 
               @Override
@@ -122,10 +119,6 @@ public class T_Make_Request extends AppCompatActivity  {
 
                 text2 = parent.getItemAtPosition(position).toString();
 
-
-
-
-
             }
 
             @Override
@@ -136,7 +129,7 @@ public class T_Make_Request extends AppCompatActivity  {
         });
         submit_req.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+                public void onClick(View v) {
 
                 //get address from the helper
 
@@ -166,18 +159,12 @@ public class T_Make_Request extends AppCompatActivity  {
                             }
                         });
 
-
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         Toast.makeText(T_Make_Request.this, "Failed to register", Toast.LENGTH_SHORT).show();
-
                     }
                 });
-
-
-
 
             }
         });

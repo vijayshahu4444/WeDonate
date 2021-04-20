@@ -92,4 +92,12 @@
         android:text="Search"
         android:textColor="@color/white" />
 
+    <ListView
+        android:id="@+id/listview2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/search_donor_btn"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp" />
+
 </RelativeLayout>
