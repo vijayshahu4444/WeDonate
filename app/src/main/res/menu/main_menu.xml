@@ -26,6 +26,11 @@
             android:icon="@drawable/blood_bank_icon"
             android:title="Find Blood Bank" />
 
+        <item
+            android:id="@+id/payment"
+            android:icon="@drawable/blood_bank_icon"
+            android:title="Payment" />
+
 
 
 

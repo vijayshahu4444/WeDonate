@@ -14,7 +14,7 @@ public class UserRegister {
     //this is for reqest address
     String address;
 
-    public UserRegister(){
+    public UserRegister() {
 
     }
 
