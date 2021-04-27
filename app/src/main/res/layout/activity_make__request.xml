@@ -138,7 +138,7 @@
             android:text="Submit Request"
             android:layout_below="@+id/input_layout"
             android:layout_marginTop="30dp"
-            android:background="@color/colorPrimary"
+            android:backgroundTint="@color/teal_700"
             android:textColor="@color/white"
             android:layout_alignRight="@+id/linearLayout"
             android:layout_alignEnd="@+id/linearLayout"
