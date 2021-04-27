@@ -5,21 +5,41 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.TextView;
+
+import com.airbnb.lottie.LottieAnimationView;
 
 public class SplashScreen extends AppCompatActivity {
+
+    TextView appname;
+    LottieAnimationView lottie;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-        //We will use handler to use delay
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+
+        appname = findViewById(R.id.aapName);
+        lottie = findViewById(R.id.lottie);
+
+
+        appname.animate().translationY(-1400).setDuration(2700).setDuration(0);
+        lottie.animate().translationX(2500).setDuration(2500).setDuration(2900);
+
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashScreen.this,Login_form.class));
+
+                Intent intent = new Intent(getApplicationContext(),Login_form.class);
+                startActivity(intent);
                 finish();
+
             }
-        }, 2000);
+        },2300);
+
+
+
+
     }
 }

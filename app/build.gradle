@@ -59,6 +59,8 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:26.6.0')
     implementation 'com.razorpay:checkout:1.6.6'
 
+    implementation 'com.airbnb.android:lottie:3.7.0'
+
 
 
 
