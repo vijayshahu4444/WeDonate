@@ -48,7 +48,7 @@
         android:id="@+id/btnUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:backgroundTint="@color/teal_700"
         android:layout_alignParentBottom="true"
         android:text="update"
         android:textSize="20sp"/>

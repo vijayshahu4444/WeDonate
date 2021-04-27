@@ -89,6 +89,7 @@
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/linearLayout4"
+        android:backgroundTint="@color/teal_700"
         android:text="Search"
         android:textColor="@color/white" />
 

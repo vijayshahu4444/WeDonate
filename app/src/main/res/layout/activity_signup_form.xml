@@ -181,8 +181,9 @@
         android:text="Register"
         android:textSize="20sp"
         android:layout_marginTop="25dp"
+        android:backgroundTint="@color/teal_700"
         android:textColor="@color/white"
-        android:background="@drawable/button_rounded" />
+         />
 
 
 
