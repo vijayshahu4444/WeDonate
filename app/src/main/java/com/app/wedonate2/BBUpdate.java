@@ -99,6 +99,7 @@ public class BBUpdate extends AppCompatActivity {
                                 if(task.isSuccessful()){
                                     Intent intent = new Intent(BBUpdate.this,Blood_Bank.class);
                                     startActivity(intent);
+                                    finish();
                                 }
                             }
                         });

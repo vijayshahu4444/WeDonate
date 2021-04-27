@@ -15,12 +15,15 @@
         android:orientation="vertical"
         android:padding="30dp">
 
-        <ImageView
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loginIMG"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/icon_login">
+            app:lottie_autoPlay="true"
+            app:lottie_rawRes="@raw/login2"
+            app:lottie_repeatCount="200" />
 
-        </ImageView>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
