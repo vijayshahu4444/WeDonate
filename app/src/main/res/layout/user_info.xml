@@ -1,65 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@color/background">
 
-
-    <TextView
-        android:id="@+id/textname"
-        android:textSize="20sp"
-        android:text="Address:"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"/>
-
-
-
-    <TextView
-        android:id="@+id/address"
-        android:textSize="18sp"
-        android:text="address"
-        android:layout_marginLeft="30dp"
-        android:textColor="@color/black"
-        android:textAlignment="gravity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/textblood"
-        android:textSize="20sp"
-        android:text="Blood Group:"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:id="@+id/userInfo"
-        android:textSize="18sp"
-        android:text="Blood Group"
-        android:layout_marginLeft="30dp"
-        android:textColor="@color/black"
+    <LinearLayout
+        android:id="@+id/layer1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:background="#91f1f1f1"
+        android:orientation="horizontal"
+        android:paddingBottom="2dp">
 
-    <TextView
-        android:id="@+id/textcity"
-        android:textSize="20sp"
-        android:text="City:"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/city"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:layout_marginLeft="30dp"
-        android:text="city"
+        <TextView
+            android:id="@+id/textname"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Address:"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="address"
+            android:textAlignment="gravity"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/layer2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layer1"
+        android:layout_alignParentLeft="true"
+        android:background="#91f1f1f1"
+        android:orientation="horizontal"
+        android:paddingBottom="2dp">
+
+        <TextView
+            android:id="@+id/textblood"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Blood Group:"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/userInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Blood Group"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
 
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/layer3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layer2"
+        android:layout_alignParentLeft="true"
+        android:background="#91f1f1f1"
+        android:orientation="horizontal"
+        android:paddingBottom="2dp">
+
+        <TextView
+            android:id="@+id/textcity"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="City:"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="city"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+</RelativeLayout>
