@@ -8,8 +8,8 @@ public class UserRegister {
     String l_Name;
     String Phone;
     String passwod;
-    CheckBox M;
-    CheckBox F;
+    String email;
+    String Gender;
 
     //this is for reqest address
     String address;
@@ -18,14 +18,16 @@ public class UserRegister {
 
     }
 
-    public UserRegister(String userID, String f_Name, String l_Name, String Phone, String passwod, CheckBox m, CheckBox f) {
+
+    public UserRegister(String userID, String f_Name, String l_Name, String Phone, String passwod, String Gender, String email) {
         this.userID = userID;
         this.f_Name = f_Name;
         this.l_Name = l_Name;
         this.Phone = Phone;
         this.passwod = passwod;
-        M = m;
-        F = f;
+        this.email = email;
+        this.Gender = Gender;
+
     }
 
     public String getUserID() {
@@ -68,21 +70,6 @@ public class UserRegister {
         this.passwod = passwod;
     }
 
-    public CheckBox getM() {
-        return M;
-    }
-
-    public void setM(CheckBox m) {
-        M = m;
-    }
-
-    public CheckBox getF() {
-        return F;
-    }
-
-    public void setF(CheckBox f) {
-        F = f;
-    }
 
     public String getAddress() {
         return address;
@@ -90,5 +77,21 @@ public class UserRegister {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return Gender;
+    }
+
+    public void setGender(String gender) {
+        Gender = gender;
     }
 }

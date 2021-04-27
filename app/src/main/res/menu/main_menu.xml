@@ -28,7 +28,7 @@
 
         <item
             android:id="@+id/payment"
-            android:icon="@drawable/blood_bank_icon"
+            android:icon="@drawable/ic_baseline_payment_24"
             android:title="Payment" />
 
 

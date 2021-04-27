@@ -3,31 +3,39 @@ package com.app.wedonate2;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Payment extends AppCompatActivity {
-    EditText amount, note, name, upivirtualid;
+public class Payment extends AppCompatActivity implements PaymentResultListener {
+
     Button send;
-    String TAG = "main";
-    final int UPI_PAYMENT = 0;
+    TextView paytext;
+    EditText number;
+    String text;
 
 
-    //if only G pay want to use then we usee this code
-    String GOOGLE_PAY_PACKAGE_NAME = "com.google.android.apps.nbu.paisa.user";
-    int GOOGLE_PAY_REQUEST_CODE = 123;
+
+
 
 
     @Override
@@ -35,138 +43,96 @@ public class Payment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
         send = (Button) findViewById(R.id.send);
-        amount = (EditText) findViewById(R.id.amount_et);
-        note = (EditText) findViewById(R.id.note);
-        name = (EditText) findViewById(R.id.pay_name);
-        upivirtualid = (EditText) findViewById(R.id.upi_id);
+        number =findViewById(R.id.mobilePay);
+
+
+
+        paytext = findViewById(R.id.paytext);
+
+        //This payment method id used by the Razorpay
+        Checkout.preload(getApplicationContext());
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(name.getText().toString().trim())) {
-                    Toast.makeText(Payment.this, " Name is invalid", Toast.LENGTH_SHORT).show();
-                } else if (TextUtils.isEmpty(upivirtualid.getText().toString().trim())) {
-                    Toast.makeText(Payment.this, " UPI ID is invalid", Toast.LENGTH_SHORT).show();
-                } else if (TextUtils.isEmpty(note.getText().toString().trim())) {
-                    Toast.makeText(Payment.this, " Note is invalid", Toast.LENGTH_SHORT).show();
-                } else if (TextUtils.isEmpty(amount.getText().toString().trim())) {
-                    Toast.makeText(Payment.this, " Amount is invalid", Toast.LENGTH_SHORT).show();
-                } else {
-                    payUsingUpi(name.getText().toString(), upivirtualid.getText().toString(), note.getText().toString(), amount.getText().toString());
+
+                text =number.getText().toString().trim();
+
+                String phone = number.getText().toString().trim();
+
+
+                if (TextUtils.isEmpty(phone)) {
+
+                    number.setError("Enter your Mobile Number ");
+                    return;
+                }else if (phone.length() < 10) {
+                    number.setError("Enter the correct number");
+                    return;
+                }else {
+
+                    makepayment();
                 }
+
+
+
             }
         });
+
+
+
     }
 
-    void payUsingUpi(String name, String upiId, String note, String amount) {
-        Log.e("main ", "name " + name + "--up--" + upiId + "--" + note + "--" + amount);
-        Uri uri = Uri.parse("upi://pay").buildUpon()
-                .appendQueryParameter("pa", upiId)
-                .appendQueryParameter("pn", name)
-                //.appendQueryParameter("mc", "")
-                //.appendQueryParameter("tid", "02125412")
-                //.appendQueryParameter("tr", "25584584")
-                .appendQueryParameter("tn", note)
-                .appendQueryParameter("am", amount)
-                .appendQueryParameter("cu", "INR")
-                //.appendQueryParameter("refUrl", "blueapp")
-                .build();
-        Intent upiPayIntent = new Intent(Intent.ACTION_VIEW);
-        upiPayIntent.setData(uri);
-        // will always show a dialog to user to choose an app
-        Intent chooser = Intent.createChooser(upiPayIntent, "Pay with");
-        // check if intent resolves
-        if (null != chooser.resolveActivity(getPackageManager())) {
-            startActivityForResult(chooser, UPI_PAYMENT);
-        } else {
-            Toast.makeText(Payment.this, "No UPI app found, please install one to continue", Toast.LENGTH_SHORT).show();
+    private void makepayment() {
+
+        Checkout checkout = new Checkout();
+        checkout.setKeyID("rzp_test_4W3AzNuZZuRpdA");
+
+
+
+        checkout.setImage(R.drawable.logo);
+
+
+        final Activity activity = this;
+
+
+        try {
+            JSONObject options = new JSONObject();
+
+            options.put("name", "WeDonate");
+            options.put("description", "Reference No. #123456");
+            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
+           // options.put("order_id", "order_DBJOWzybf0sJbb");//from response of step 3.
+            options.put("theme.color", "#3399cc");
+            options.put("currency", "INR");
+            options.put("amount", "50000");//pass amount in currency subunits 500/100 they will divide by 100 so for ammount multiply by 100 then put value
+            options.put("prefill.email", "WeDonateDonor@gmail.com");
+            //options.put("prefill.contact","9766029396");
+            options.put("prefill.contact",text);
+            JSONObject retryObj = new JSONObject();
+            retryObj.put("enabled", true);
+            retryObj.put("max_count", 4);
+            options.put("retry", retryObj);
+
+            checkout.open(activity, options);
+
+        } catch(Exception e) {
+            Log.e("TAG", "Error in starting Razorpay Checkout", e);
         }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.e("main ", "response " + resultCode);
-        /*
-       E/main: response -1
-       E/UPI: onActivityResult: txnId=AXI4a3428ee58654a938811812c72c0df45&responseCode=00&Status=SUCCESS&txnRef=922118921612
-       E/UPIPAY: upiPaymentDataOperation: txnId=AXI4a3428ee58654a938811812c72c0df45&responseCode=00&Status=SUCCESS&txnRef=922118921612
-       E/UPI: payment successfull: 922118921612
-         */
-        switch (requestCode) {
-            case UPI_PAYMENT:
-                if ((RESULT_OK == resultCode) || (resultCode == 11)) {
-                    if (data != null) {
-                        String trxt = data.getStringExtra("response");
-                        Log.e("UPI", "onActivityResult: " + trxt);
-                        ArrayList<String> dataList = new ArrayList<>();
-                        dataList.add(trxt);
-                        upiPaymentDataOperation(dataList);
-                    } else {
-                        Log.e("UPI", "onActivityResult: " + "Return data is null");
-                        ArrayList<String> dataList = new ArrayList<>();
-                        dataList.add("nothing");
-                        upiPaymentDataOperation(dataList);
-                    }
-                } else {
-                    //when user simply back without payment
-                    Log.e("UPI", "onActivityResult: " + "Return data is null");
-                    ArrayList<String> dataList = new ArrayList<>();
-                    dataList.add("nothing");
-                    upiPaymentDataOperation(dataList);
-                }
-                break;
-        }
+    public void onPaymentSuccess(String s) {
+
+        paytext.setText("Successful Payment ID:"+s);
     }
 
-    private void upiPaymentDataOperation(ArrayList<String> data) {
-        if (isConnectionAvailable(Payment.this)) {
-            String str = data.get(0);
-            Log.e("UPIPAY", "upiPaymentDataOperation: " + str);
-            String paymentCancel = "";
-            if (str == null) str = "discard";
-            String status = "";
-            String approvalRefNo = "";
-            String response[] = str.split("&");
-            for (int i = 0; i < response.length; i++) {
-                String equalStr[] = response[i].split("=");
-                if (equalStr.length >= 2) {
-                    if (equalStr[0].toLowerCase().equals("Status".toLowerCase())) {
-                        status = equalStr[1].toLowerCase();
-                    } else if (equalStr[0].toLowerCase().equals("ApprovalRefNo".toLowerCase()) || equalStr[0].toLowerCase().equals("txnRef".toLowerCase())) {
-                        approvalRefNo = equalStr[1];
-                    }
-                } else {
-                    paymentCancel = "Payment cancelled by user.";
-                }
-            }
-            if (status.equals("success")) {
-                //Code to handle successful transaction here.
-                Toast.makeText(Payment.this, "Transaction successful.", Toast.LENGTH_SHORT).show();
-                Log.e("UPI", "payment successfull: " + approvalRefNo);
-            } else if ("Payment cancelled by user.".equals(paymentCancel)) {
-                Toast.makeText(Payment.this, "Payment cancelled by user.", Toast.LENGTH_SHORT).show();
-                Log.e("UPI", "Cancelled by user: " + approvalRefNo);
-            } else {
-                Toast.makeText(Payment.this, "Transaction failed.Please try again", Toast.LENGTH_SHORT).show();
-                Log.e("UPI", "failed payment: " + approvalRefNo);
-            }
-        } else {
-            Log.e("UPI", "Internet issue: ");
-            Toast.makeText(Payment.this, "Internet connection is not available. Please check and try again", Toast.LENGTH_SHORT).show();
-        }
+    @Override
+    public void onPaymentError(int i, String s) {
+
+        paytext.setText("Payment Fail and cause is:"+s);
+
     }
 
-    public static boolean isConnectionAvailable(Context context) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivityManager != null) {
-            NetworkInfo netInfo = connectivityManager.getActiveNetworkInfo();
-            if (netInfo != null && netInfo.isConnected()
-                    && netInfo.isConnectedOrConnecting()
-                    && netInfo.isAvailable()) {
-                return true;
-            }
-        }
-        return false;
-    }
+
+
 }

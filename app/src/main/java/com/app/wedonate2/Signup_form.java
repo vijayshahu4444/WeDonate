@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,14 +32,19 @@ import java.util.HashMap;
 
 public class Signup_form extends AppCompatActivity {
     //Variables
-       EditText fname, lname,phonenum, createPass, confPass, email ;
-       RadioButton RbtnM, RbtnF;
-       CheckBox DonorAgree;
-       Button btn_Submit;
-       FirebaseAuth fauth;
+    EditText fname, lname, phonenum, createPass, confPass, email;
+    CheckBox DonorAgree;
+    Button btn_Submit;
+    FirebaseAuth fauth;
     String text;
+    String Gender;
+    RadioButton male, female;
+    RadioGroup radioGroup;
+    String value;
 
 
+    String Male;
+    String Female;
 
 
     // Create Databse refrance
@@ -60,13 +66,16 @@ public class Signup_form extends AppCompatActivity {
         phonenum = findViewById(R.id.phonenum);
         createPass = findViewById(R.id.createPass);
         confPass = findViewById(R.id.confPass);
-        RbtnM = findViewById(R.id.RbtnM);
-        RbtnF = findViewById(R.id.RbtnF);
+        male = findViewById(R.id.RbtnM);
+        female = findViewById(R.id.RbtnF);
         DonorAgree = findViewById(R.id.DonorAgree);
+        radioGroup = findViewById(R.id.radiogroup);
+
+
         fauth = FirebaseAuth.getInstance();
 
-        if(fauth.getCurrentUser()!= null){
-            startActivity(new Intent(getApplicationContext(),Home_Page.class));
+        if (fauth.getCurrentUser() != null) {
+            startActivity(new Intent(getApplicationContext(), Home_Page.class));
             finish();
         }
 
@@ -75,8 +84,18 @@ public class Signup_form extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Get all the values from text feilds
+                 value = ((RadioButton)findViewById(radioGroup.getCheckedRadioButtonId())).getText().toString();
 
+
+                radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup group, int checkedId) {
+                        Toast.makeText(Signup_form.this, value, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                //Get all the values from text feilds
+                System.out.println("The group" + value);
 
                 String Fname = fname.getText().toString().trim();
                 String Lname = lname.getText().toString().trim();
@@ -85,98 +104,89 @@ public class Signup_form extends AppCompatActivity {
                 String conpass = confPass.getText().toString().trim();
                 String Email = email.getText().toString().trim();
 
-                if(TextUtils.isEmpty(Fname)){
+
+                if (TextUtils.isEmpty(Fname)) {
 
                     fname.setError("Please Enter your name");
                     return;
-                }
-               else if(TextUtils.isEmpty(Lname)){
+                } else if (TextUtils.isEmpty(Lname)) {
 
                     lname.setError("Please Enter your name");
                     return;
-                }
-                else if(TextUtils.isEmpty(Email)){
+                } else if (TextUtils.isEmpty(Email)) {
 
                     lname.setError("Email is require");
                     return;
-                }
-                else if(TextUtils.isEmpty(number)){
+                } else if (TextUtils.isEmpty(number)) {
 
                     phonenum.setError("Enter your Mobile Number");
                     return;
-                }
-                else if(number.length() < 10){
+                } else if (number.length() < 10) {
                     createPass.setError("Enter the correct number");
                     return;
-                }
-                else if(TextUtils.isEmpty(crpass)){
+                } else if (TextUtils.isEmpty(crpass)) {
                     createPass.setError("Please Enter the Password");
                     return;
-                }
-                else if(crpass.length() < 6){
+                } else if (crpass.length() < 6) {
                     createPass.setError("Password length should be Six digits");
                     return;
-                }
-                else if(!crpass.contentEquals(conpass))
-                {
+                } else if (!crpass.contentEquals(conpass)) {
                     confPass.setError("Password is not Match");
                     return;
+                }  else {
+                    if (DonorAgree.isChecked()) {
+                        text = "1";
+                    } else {
+                        text = "0";
+                    }
+
+                    validateDetails(Fname, Lname, number, crpass, Email);
                 }
 
 
+            }
+
+            private void validateDetails(String fname, String lname, String number, String crpass, String Email) {
+                reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (!snapshot.child("Users").child(number).exists()) {
+                            HashMap<String, Object> userdatamap = new HashMap<>();
+                            userdatamap.put("Phone", number);
+                            userdatamap.put("fname", fname);
+                            userdatamap.put("lname", lname);
+                            userdatamap.put("passwod", crpass);
+                            userdatamap.put("donaragree", text);
+                            userdatamap.put("email", Email);
+                            userdatamap.put("Gender",value);
+                            /*userdatamap.put("Gender",Gender);*/
 
 
-              else{
-                  if(DonorAgree.isChecked()){
-                      text = "1";
-                  }
-                  else {
-                          text = "0";
-                      }
+                            reference.child("Users").child(number).updateChildren(userdatamap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Intent intent = new Intent(Signup_form.this, Donar_Detail.class);
+                                        intent.putExtra("sinup", "111");
+                                        startActivity(intent);
 
-                    validateDetails(Fname,Lname,number,crpass);
-                }
-
-
-
-    }
-
-    private void validateDetails(String fname, String lname, String number, String crpass) {
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(!snapshot.child("Users").child(number).exists()){
-                    HashMap<String,Object>userdatamap =new HashMap<>();
-                    userdatamap.put("Phone",number);
-                    userdatamap.put("fname",fname);
-                    userdatamap.put("lname",lname);
-                    userdatamap.put("passwod",crpass);
-                    userdatamap.put("donaragree",text);
-                    reference.child("Users").child(number).updateChildren(userdatamap).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-                                Intent intent = new Intent(Signup_form.this,Donar_Detail.class);
-                                intent.putExtra("sinup","111");
-                                startActivity(intent);
-
-                            }
+                                    }
+                                }
+                            });
                         }
-                    });
-                }
-            }
+                    }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Signup_form.this, "Failed to register", Toast.LENGTH_SHORT).show();
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(Signup_form.this, "Failed to register", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
 
             }
         });
-
     }
-        });
-    }
-    }
+}
 
 
 

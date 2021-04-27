@@ -16,6 +16,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,6 +42,7 @@ public class Login_form extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference ref, ref2,ref3;
     Session sessionManager;
+    TextView forgotpass;
 
 
     
@@ -60,6 +62,7 @@ public class Login_form extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Blood_Request");
         ref2 = database.getReference("DonarDetail");
+        forgotpass =findViewById(R.id.forgot_pass);
 
 
 
@@ -151,6 +154,14 @@ public class Login_form extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Login_form.this,Signup_form.class));
+            }
+        });
+
+        forgotpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity((new Intent(Login_form.this,ForgotPass.class)));
+
             }
         });
 
