@@ -27,6 +27,7 @@ public class BBUpdate extends AppCompatActivity {
     private static String text,text2;
     Button btn_insert, btn_delete;
     DatabaseReference reference;
+    String add;
 
 
     @Override
@@ -88,6 +89,9 @@ public class BBUpdate extends AppCompatActivity {
             public void onClick(View v) {
 
                 reference.addListenerForSingleValueEvent(new ValueEventListener() {
+
+
+
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         HashMap<String,Object> userdatamap =new HashMap<>();

@@ -9,11 +9,14 @@ import android.os.Bundle;
 import android.renderscript.Sampler;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,6 +44,8 @@ public class Signup_form extends AppCompatActivity {
     RadioButton male, female;
     RadioGroup radioGroup;
     String value;
+    SpinnerHelper helper;
+    private static String text2;
 
 
     String Male;
@@ -70,6 +75,38 @@ public class Signup_form extends AppCompatActivity {
         female = findViewById(R.id.RbtnF);
         DonorAgree = findViewById(R.id.DonorAgree);
         radioGroup = findViewById(R.id.radiogroup);
+        helper = new SpinnerHelper();
+
+
+        Spinner spinner = findViewById(R.id.spinner_bloodgrp2);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.Blood, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                text2 = parent.getItemAtPosition(position).toString();
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+
+            }
+        });
+
+
+
+
+
+
 
 
         fauth = FirebaseAuth.getInstance();
@@ -159,7 +196,8 @@ public class Signup_form extends AppCompatActivity {
                             userdatamap.put("donaragree", text);
                             userdatamap.put("email", Email);
                             userdatamap.put("Gender",value);
-                            /*userdatamap.put("Gender",Gender);*/
+                            userdatamap.put("Blood_Group",text2);
+
 
 
                             reference.child("Users").child(number).updateChildren(userdatamap).addOnCompleteListener(new OnCompleteListener<Void>() {
