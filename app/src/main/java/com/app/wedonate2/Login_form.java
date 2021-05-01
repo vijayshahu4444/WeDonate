@@ -62,6 +62,7 @@ public class Login_form extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Blood_Request");
         ref2 = database.getReference("DonarDetail");
+        ref3 = database.getReference("Users");
         forgotpass =findViewById(R.id.forgot_pass);
 
 
@@ -104,14 +105,27 @@ public class Login_form extends AppCompatActivity {
                                                 String a = (String) snapshot.child("City").getValue().toString();
                                                 String b = (String) snapshot.child("Blood").getValue().toString();
                                                 String c = (String) snapshot.child("WillDonate").getValue().toString();
-                                                sessionManager = new Session(getApplicationContext());
-                                              sessionManager.createLoginSession(a,b,c);
-                                              System.out.println(a+b+c);
-                                                Intent intent = (new Intent(Login_form.this,Home_Page.class));
-                                                intent.putExtra("mobile",phone);
-                                                startActivity(intent);
+                                                ref3.child(phone).addListenerForSingleValueEvent(new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                        String d = (String) snapshot.child("fname").getValue().toString();
+                                                        sessionManager = new Session(getApplicationContext());
+                                                        sessionManager.createLoginSession(a,b,c,d);
+                                                        System.out.println(a+b+c+d);
+                                                        Intent intent = (new Intent(Login_form.this,Home_Page.class));
+                                                        intent.putExtra("mobile",phone);
+                                                        startActivity(intent);
 
-                                                finish();
+                                                        finish();
+
+                                                    }
+
+                                                    @Override
+                                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                                    }
+                                                });
+
                                             }
 
                                             @Override

@@ -21,10 +21,12 @@ public class ListAdapterFindDonar extends ArrayAdapter<Find_Blood_Model_Class> {
         if(convertView==null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.user_info,parent,false);
         }
+        TextView textView = convertView.findViewById(R.id.name2);
         TextView tv = convertView.findViewById(R.id.address);
         TextView tv2 = convertView.findViewById(R.id.userInfo);
         TextView tv3 = convertView.findViewById(R.id.city);
 
+        textView.setText(user2.getName());
         tv.setText(user2.getAddress());
         tv2.setText(user2.getBlood());
         tv3.setText(user2.getCity());

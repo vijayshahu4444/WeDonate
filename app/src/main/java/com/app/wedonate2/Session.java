@@ -16,6 +16,7 @@ public class Session {
     public static final String KEY_CITY = "AURANGABAD";
     public static final String KEY_BLOOD = "A +";
     public static final String KEY_DONATE = "YES";
+    public static final String KEY_NAME = "null";
 
 
     public Session(Context _context){
@@ -25,12 +26,13 @@ public class Session {
 
     }
 
-    public  void createLoginSession(String city, String blood, String donate){
+    public  void createLoginSession(String city, String blood, String donate,String name){
         editor.putBoolean(Is_login,true);
 
         editor.putString(KEY_CITY,city);
         editor.putString(KEY_BLOOD,blood);
         editor.putString(KEY_DONATE,donate);
+        editor.putString(KEY_NAME,name);
 
         editor.commit();
     }
@@ -40,6 +42,7 @@ public class Session {
         userData.put(KEY_CITY,usersSession.getString(KEY_CITY, null));
         userData.put(KEY_BLOOD,usersSession.getString(KEY_BLOOD, null));
         userData.put(KEY_DONATE,usersSession.getString(KEY_DONATE,null));
+        userData.put(KEY_NAME,usersSession.getString(KEY_NAME,null));
         return userData;
     }
     private static final String TAG="SessionManager";
