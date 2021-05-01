@@ -25,7 +25,7 @@ public class Donar_Detail extends AppCompatActivity {
     EditText name, mobno, address;
     Button sbmt;
     FirebaseDatabase database;
-    DatabaseReference ref;
+    DatabaseReference ref,ref2;
 
 
     @Override
@@ -35,8 +35,10 @@ public class Donar_Detail extends AppCompatActivity {
         name = findViewById(R.id.fname);
         mobno = findViewById(R.id.phonenum);
         String phone = getIntent().getStringExtra("mobile");
+        String phone2 = getIntent().getStringExtra("num");
         database = FirebaseDatabase.getInstance();
-        ref = database.getReference().child("DonarDetail").child(phone);
+
+        ref2 = database.getReference().child("DonarDetail").child(phone2);
         String a = getIntent().getStringExtra("sinup");
 
         address = findViewById(R.id.address2);
@@ -101,7 +103,7 @@ public class Donar_Detail extends AppCompatActivity {
                     orderMap.put("City", text2);
                     orderMap.put("Code",text2+text+"YES");
                     orderMap.put("WillDonate","YES");
-                    ref.updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    ref2.updateChildren(orderMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             Intent intent = new Intent(Donar_Detail.this,Login_form.class);
@@ -112,9 +114,11 @@ public class Donar_Detail extends AppCompatActivity {
                 }
             });
         }else {
+            ref = database.getReference().child("DonarDetail").child(phone);
             sbmt.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     HashMap<String, Object> orderMap = new HashMap<>();
                     orderMap.put("Name", name.getText().toString());
                     orderMap.put("Phone", mobno.getText().toString());

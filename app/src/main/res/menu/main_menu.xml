@@ -31,6 +31,11 @@
             android:icon="@drawable/ic_baseline_payment_24"
             android:title="Payment" />
 
+        <item
+            android:id="@+id/receipt"
+            android:icon="@drawable/recept_icon"
+            android:title="Receipt" />
+
 
 
 

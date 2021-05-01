@@ -36,7 +36,6 @@ import java.util.HashMap;
 public class Signup_form extends AppCompatActivity {
     //Variables
     EditText fname, lname, phonenum, createPass, confPass, email;
-    CheckBox DonorAgree;
     Button btn_Submit;
     FirebaseAuth fauth;
     String text;
@@ -73,34 +72,11 @@ public class Signup_form extends AppCompatActivity {
         confPass = findViewById(R.id.confPass);
         male = findViewById(R.id.RbtnM);
         female = findViewById(R.id.RbtnF);
-        DonorAgree = findViewById(R.id.DonorAgree);
         radioGroup = findViewById(R.id.radiogroup);
         helper = new SpinnerHelper();
 
 
-        Spinner spinner = findViewById(R.id.spinner_bloodgrp2);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.Blood, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                text2 = parent.getItemAtPosition(position).toString();
-
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-
-            }
-        });
 
 
 
@@ -132,7 +108,7 @@ public class Signup_form extends AppCompatActivity {
                 });
 
                 //Get all the values from text feilds
-                System.out.println("The group" + value);
+
 
                 String Fname = fname.getText().toString().trim();
                 String Lname = lname.getText().toString().trim();
@@ -171,11 +147,8 @@ public class Signup_form extends AppCompatActivity {
                     confPass.setError("Password is not Match");
                     return;
                 }  else {
-                    if (DonorAgree.isChecked()) {
-                        text = "1";
-                    } else {
-                        text = "0";
-                    }
+
+
 
                     validateDetails(Fname, Lname, number, crpass, Email);
                 }
@@ -193,10 +166,9 @@ public class Signup_form extends AppCompatActivity {
                             userdatamap.put("fname", fname);
                             userdatamap.put("lname", lname);
                             userdatamap.put("passwod", crpass);
-                            userdatamap.put("donaragree", text);
                             userdatamap.put("email", Email);
                             userdatamap.put("Gender",value);
-                            userdatamap.put("Blood_Group",text2);
+
 
 
 
@@ -206,6 +178,7 @@ public class Signup_form extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         Intent intent = new Intent(Signup_form.this, Donar_Detail.class);
                                         intent.putExtra("sinup", "111");
+                                        intent.putExtra("num", number);
                                         startActivity(intent);
 
                                     }

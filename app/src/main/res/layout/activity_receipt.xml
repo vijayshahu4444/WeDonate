@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Receipt">
+
+    <TextView
+        android:id="@+id/rec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/teal_700"
+        android:padding="5dp"
+        android:text="Receipt"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+
+    <TextView
+        android:layout_below="@+id/rec"
+        android:id="@+id/texts"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content"
+        android:text="Have you Donated blood ?"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"/>
+
+  <Button
+      android:layout_below="@+id/texts"
+      android:id="@+id/btn_yes"
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="75dp"
+      android:layout_marginLeft="20dp"
+      android:backgroundTint="@color/teal_700"
+      android:text="yes"/>
+
+    <Button
+        android:layout_below="@+id/texts"
+        android:id="@+id/btn_no"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:backgroundTint="@color/teal_700"
+        android:text="no"/>
+
+
+
+</RelativeLayout>

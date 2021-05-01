@@ -404,6 +404,11 @@ public class Home_Page extends AppCompatActivity implements NavigationView.OnNav
                 startActivity(intent6);
                 break;
 
+            case R.id.receipt:
+                Intent intent7 = new Intent(Home_Page.this,Receipt.class);
+                startActivity(intent7);
+                break;
+
 
         }
 
