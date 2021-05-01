@@ -8,6 +8,10 @@
     android:background="@color/background"
     tools:context=".Login_form">
 
+
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,13 +19,25 @@
         android:orientation="vertical"
         android:padding="30dp">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/teal_700"
+            android:padding="5dp"
+            android:text="WeDonate"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" />
+
+
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/loginIMG"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             app:lottie_autoPlay="true"
-            app:lottie_rawRes="@raw/login2"
+            app:lottie_rawRes="@raw/login3"
             app:lottie_repeatCount="200" />
 
 

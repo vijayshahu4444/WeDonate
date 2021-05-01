@@ -399,6 +399,11 @@ public class Home_Page extends AppCompatActivity implements NavigationView.OnNav
                 startActivity(intent5);
                 break;
 
+            case R.id.nav_profile:
+                Intent intent6 = new Intent(Home_Page.this,Profile.class);
+                startActivity(intent6);
+                break;
+
 
         }
 

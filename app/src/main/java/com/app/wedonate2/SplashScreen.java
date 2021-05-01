@@ -24,8 +24,8 @@ public class SplashScreen extends AppCompatActivity {
         lottie = findViewById(R.id.lottie);
 
 
-        appname.animate().translationY(-1400).setDuration(2700).setDuration(0);
-        lottie.animate().translationX(2500).setDuration(2500).setDuration(2900);
+        appname.animate().translationY(-1400).setDuration(3000).setDuration(2100);
+        lottie.animate().translationX(3000).setDuration(3000).setDuration(3900);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -36,7 +36,7 @@ public class SplashScreen extends AppCompatActivity {
                 finish();
 
             }
-        },2300);
+        },4000);
 
 
 

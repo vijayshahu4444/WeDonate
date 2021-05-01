@@ -29,6 +29,8 @@ public class BBUpdate extends AppCompatActivity {
     DatabaseReference reference;
     String add;
 
+    DatabaseReference dbr;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,7 @@ public class BBUpdate extends AppCompatActivity {
         btn_insert = findViewById(R.id.btnInsert);
         btn_delete = findViewById(R.id.btnDelete);
         reference = FirebaseDatabase.getInstance().getReference();
+        dbr = FirebaseDatabase.getInstance().getReference("Storage");
 
         Spinner spinner = findViewById(R.id.spinner_bloodgrpBB);
         Spinner spinner2 = findViewById(R.id.spinner_packets);
@@ -90,6 +93,7 @@ public class BBUpdate extends AppCompatActivity {
 
                 reference.addListenerForSingleValueEvent(new ValueEventListener() {
 
+                    
 
 
                     @Override

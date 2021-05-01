@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:background="#91f1f1f1"
+        android:background="@color/background"
         android:orientation="horizontal"
         android:paddingBottom="2dp">
 
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/layer1"
         android:layout_alignParentLeft="true"
-        android:background="#91f1f1f1"
+        android:background="@color/background"
         android:orientation="horizontal"
         android:paddingBottom="2dp">
 
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/layer2"
         android:layout_alignParentLeft="true"
-        android:background="#91f1f1f1"
+        android:background="@color/background"
         android:orientation="horizontal"
         android:paddingBottom="2dp">
 
