@@ -39,7 +39,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15sp"
             android:fontFamily="sans-serif-light"
-            android:text="User Name"
+            android:text="Full Name"
             android:textColor="@color/white"
             android:textSize="32sp" />
 
