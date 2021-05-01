@@ -374,11 +374,11 @@ public class Home_Page extends AppCompatActivity implements NavigationView.OnNav
             case R.id.nav_home:
                 break;
             case R.id.nav_admin_bb:
-                Intent intent = new Intent(Home_Page.this, Blood_Bank.class);
+                Intent intent = new Intent(Home_Page.this, AdminBB.class);
                 startActivity(intent);
                 break;
             case R.id.nav_admin_chat:
-                Intent intent1 = new Intent(Home_Page.this, Chat.class);
+                Intent intent1 = new Intent(Home_Page.this, AdminChat.class);
                 startActivity(intent1);
                 break;
             case R.id.nav_logout:

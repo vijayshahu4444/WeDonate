@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.Lottie;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 
@@ -32,6 +33,7 @@ public class Payment extends AppCompatActivity implements PaymentResultListener 
     TextView paytext;
     EditText number;
     String text;
+    View fail,success;
 
 
 
@@ -44,6 +46,9 @@ public class Payment extends AppCompatActivity implements PaymentResultListener 
         setContentView(R.layout.activity_payment);
         send = (Button) findViewById(R.id.send);
         number =findViewById(R.id.mobilePay);
+        fail = findViewById(R.id.payFail);
+        success = findViewById(R.id.paySuccess);
+
 
 
 
@@ -123,13 +128,18 @@ public class Payment extends AppCompatActivity implements PaymentResultListener 
     @Override
     public void onPaymentSuccess(String s) {
 
-        paytext.setText("Successful Payment ID:"+s);
+        paytext.setText("Transaction ID:"+s);
+        success.setVisibility(View.VISIBLE);
+        fail.setVisibility(View.GONE);
+
     }
 
     @Override
     public void onPaymentError(int i, String s) {
 
         paytext.setText("Payment Fail and cause is:"+s);
+        fail.setVisibility(View.VISIBLE);
+        success.setVisibility(View.GONE);
 
     }
 
