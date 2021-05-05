@@ -27,18 +27,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class T_Make_Request extends AppCompatActivity  {
+public class T_Make_Request extends AppCompatActivity {
     Button submit_req;
-    DatabaseReference reference;
-    Spinner spinner_bloodgrp;
-    Spinner spinner_city;
-   private static String text,text2;
+
+    private static String text, text2;
     SpinnerHelper helper;
-    String phone;
+    String phone, fname, lname;
     EditText address;
-
-
-
+    Session session;
 
 
     @SuppressLint({"CutPasteId", "WrongViewCast"})
@@ -49,68 +45,53 @@ public class T_Make_Request extends AppCompatActivity  {
         submit_req = findViewById(R.id.submit_req);
         address = findViewById(R.id.address);
         helper = new SpinnerHelper();
+        session = new Session(getApplicationContext());
+        HashMap<String, String> userDetail = session.getUserDetailFromSesion();
+        fname = userDetail.get(Session.KEY_NAME);
+        lname = userDetail.get(Session.KEY_lname);
+        System.out.println(fname);
+        System.out.println(lname);
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
 
-
-
-
-        if(getIntent().getStringExtra("mobile")!= null){
+        if (getIntent().getStringExtra("mobile") != null) {
             phone = getIntent().getStringExtra("mobile");
 
-        }
-        else {
+        } else {
             phone = getIntent().getStringExtra("mobile2");
         }
 
 
-
-
-
-
         Spinner spinner = findViewById(R.id.spinner_bloodgrp);
         Spinner spinner2 = findViewById(R.id.spinner_city);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.Blood, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Blood, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 
 
-
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,R.array.city, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.city, android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter2);
 
 
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                text = parent.getItemAtPosition(position).toString();
 
 
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
 
-
-
-
-
-
-
-          spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-
-              @Override
-              public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                  text = parent.getItemAtPosition(position).toString();
-
-
-              }
-
-              @Override
-              public void onNothingSelected(AdapterView<?> parent) {
-
-
-              }
-          });
+            }
+        });
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
 
@@ -129,13 +110,12 @@ public class T_Make_Request extends AppCompatActivity  {
         });
         submit_req.setOnClickListener(new View.OnClickListener() {
             @Override
-                public void onClick(View v) {
+            public void onClick(View v) {
+
 
                 //get address from the helper
 
                 String Address = address.getText().toString().trim();
-
-
 
 
                 //push reqest into the firebase
@@ -144,22 +124,25 @@ public class T_Make_Request extends AppCompatActivity  {
                 reference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        HashMap<String,Object> userdatamap =new HashMap<>();
-                        userdatamap.put("Blood_Group",text);
-                        userdatamap.put("City",text2);
-                        userdatamap.put("Address",Address);
+                        HashMap<String, Object> userdatamap = new HashMap<>();
+                        userdatamap.put("Blood_Group", text);
+                        userdatamap.put("City", text2);
+                        userdatamap.put("Address", Address);
+                        userdatamap.put("fname", fname);
+                        userdatamap.put("lname", lname);
                         reference.child("Blood_Request").child(phone).updateChildren(userdatamap).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
-                                    Intent intent = new Intent(T_Make_Request.this,Home_Page.class);
-                                    intent.putExtra("mobile_ret",phone);
+                                if (task.isSuccessful()) {
+                                    Intent intent = new Intent(T_Make_Request.this, Home_Page.class);
+                                    intent.putExtra("mobile_ret", phone);
                                     startActivity(intent);
                                 }
                             }
                         });
 
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         Toast.makeText(T_Make_Request.this, "Failed to register", Toast.LENGTH_SHORT).show();
@@ -169,10 +152,9 @@ public class T_Make_Request extends AppCompatActivity  {
             }
         });
 
-System.out.print("this is the local variable value" + text);
+        System.out.print("this is the local variable value" + text);
 
     }
-
 
 
 }

@@ -24,10 +24,16 @@ public class ListAdapter extends ArrayAdapter<User> {
         TextView tv = convertView.findViewById(R.id.address);
         TextView tv2 = convertView.findViewById(R.id.userInfo);
         TextView tv3 = convertView.findViewById(R.id.city);
+        TextView tv4 = convertView.findViewById(R.id.name2);
+        TextView tv5 = convertView.findViewById(R.id.name3);
+
+
 
         tv.setText(user.getAddress());
         tv2.setText(user.getBlood_Group());
         tv3.setText(user.getCity());
+        tv4.setText(user.getFname());
+        tv5.setText(user.getLname());
         return convertView;
     }
 

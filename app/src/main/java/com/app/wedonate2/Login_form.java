@@ -43,6 +43,7 @@ public class Login_form extends AppCompatActivity {
     DatabaseReference ref, ref2,ref3;
     Session sessionManager;
     TextView forgotpass;
+    String a,b,c,d,e,f="";
 
 
     
@@ -102,16 +103,22 @@ public class Login_form extends AppCompatActivity {
                                         ref2.child(phone).addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
                                             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                String a = (String) snapshot.child("City").getValue().toString();
-                                                String b = (String) snapshot.child("Blood").getValue().toString();
-                                                String c = (String) snapshot.child("WillDonate").getValue().toString();
+                                               a = (String) snapshot.child("City").getValue().toString();
+                                               b = (String) snapshot.child("Blood").getValue().toString();
+                                                 c = (String) snapshot.child("WillDonate").getValue().toString();
+
                                                 ref3.child(phone).addListenerForSingleValueEvent(new ValueEventListener() {
                                                     @Override
                                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                        String d = (String) snapshot.child("fname").getValue().toString();
-                                                        sessionManager = new Session(getApplicationContext());
-                                                        sessionManager.createLoginSession(a,b,c,d);
-                                                        System.out.println(a+b+c+d);
+                                                         d = (String) snapshot.child("fname").getValue().toString();
+                                                        e = (String) snapshot.child("lname").getValue().toString();
+                                                        f=(String) snapshot.child("Phone").getValue().toString();
+                                                         if(!d.isEmpty()){
+                                                             sessionManager = new Session(getApplicationContext());
+                                                             sessionManager.createLoginSession(a,b,c,d,e,f);
+                                                         }
+
+                                                        System.out.println(a+b+c+d+e+f);
                                                         Intent intent = (new Intent(Login_form.this,Home_Page.class));
                                                         intent.putExtra("mobile",phone);
                                                         startActivity(intent);
@@ -125,6 +132,7 @@ public class Login_form extends AppCompatActivity {
 
                                                     }
                                                 });
+                                                System.out.println(a+b+c+d+e);
 
                                             }
 

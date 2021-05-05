@@ -77,6 +77,7 @@ public class Home_Page extends AppCompatActivity implements NavigationView.OnNav
         myListView = findViewById(R.id.listView);
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Blood_Request");
+        ref3 = database.getReference("Users");
         ref2 = database.getReference().child("DonarDetail");
 
 

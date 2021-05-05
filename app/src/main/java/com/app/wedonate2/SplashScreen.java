@@ -13,6 +13,8 @@ public class SplashScreen extends AppCompatActivity {
 
     TextView appname;
     LottieAnimationView lottie;
+    Session session;
+
 
 
     @Override
@@ -22,6 +24,8 @@ public class SplashScreen extends AppCompatActivity {
 
         appname = findViewById(R.id.aapName);
         lottie = findViewById(R.id.lottie);
+        session = new Session(getApplicationContext());
+    session.logoutUserFromSession();
 
 
         appname.animate().translationY(-1400).setDuration(3000).setDuration(2100);
