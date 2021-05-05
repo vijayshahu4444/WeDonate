@@ -51,6 +51,7 @@ public class Home_Page extends AppCompatActivity implements NavigationView.OnNav
     ArrayList<User> list;
     Session sessionManager;
     ArrayAdapter<User> adapter;
+    Session session;
     User user;
     ToggleButton smipleSwitch;
     TextView textView;
@@ -70,7 +71,7 @@ public class Home_Page extends AppCompatActivity implements NavigationView.OnNav
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
-        phone = getIntent().getStringExtra("mobile");
+
         textView = findViewById(R.id.you_are);
 
         user = new User();
@@ -79,6 +80,9 @@ public class Home_Page extends AppCompatActivity implements NavigationView.OnNav
         ref = database.getReference("Blood_Request");
         ref3 = database.getReference("Users");
         ref2 = database.getReference().child("DonarDetail");
+        session = new Session(getApplicationContext());
+        HashMap<String, String> userDetail = session.getUserDetailFromSesion();
+        phone = userDetail.get(Session.KEY_Phone);
 
 
         list = new ArrayList<User>();

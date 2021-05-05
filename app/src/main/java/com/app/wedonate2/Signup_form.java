@@ -40,6 +40,7 @@ public class Signup_form extends AppCompatActivity {
     FirebaseAuth fauth;
     String text;
     String Gender;
+    CheckBox DonorAgree;
     RadioButton male, female;
     RadioGroup radioGroup;
     String value;
@@ -73,6 +74,7 @@ public class Signup_form extends AppCompatActivity {
         male = findViewById(R.id.RbtnM);
         female = findViewById(R.id.RbtnF);
         radioGroup = findViewById(R.id.radiogroup);
+        DonorAgree = findViewById(R.id.DonorAgree);
         helper = new SpinnerHelper();
 
 
@@ -147,7 +149,11 @@ public class Signup_form extends AppCompatActivity {
                     confPass.setError("Password is not Match");
                     return;
                 }  else {
-
+                    if (DonorAgree.isChecked()) {
+                        text = "1";
+                    } else {
+                        text = "0";
+                    }
 
 
                     validateDetails(Fname, Lname, number, crpass, Email);
@@ -168,6 +174,7 @@ public class Signup_form extends AppCompatActivity {
                             userdatamap.put("passwod", crpass);
                             userdatamap.put("email", Email);
                             userdatamap.put("Gender",value);
+                            userdatamap.put("donaragree", text);
 
 
 
