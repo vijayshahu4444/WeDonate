@@ -29,11 +29,13 @@ public class ListAdapter extends ArrayAdapter<User> {
 
 
 
+
         tv.setText(user.getAddress());
         tv2.setText(user.getBlood_Group());
         tv3.setText(user.getCity());
         tv4.setText(user.getFname());
         tv5.setText(user.getLname());
+        tv5.setVisibility(View.VISIBLE);
         return convertView;
     }
 

@@ -3,6 +3,7 @@ package com.app.wedonate2;
 public class Find_Blood_Model_Class {
     String Address,Blood,City,Name,Phone,WillDonate;
 
+
     public Find_Blood_Model_Class() {
     }
 
@@ -13,6 +14,11 @@ public class Find_Blood_Model_Class {
         Name = name;
         Phone = phone;
         WillDonate = willDonate;
+    }
+
+    public Find_Blood_Model_Class(String address, String name) {
+        Address = address;
+        Name = name;
     }
 
     public String getAddress() {

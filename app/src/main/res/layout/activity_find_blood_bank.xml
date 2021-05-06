@@ -57,12 +57,18 @@
             android:spinnerMode="dialog" />
 
     </LinearLayout>
+    <Button
+        android:id="@+id/search"
+        android:layout_below="@id/linearLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="search"/>
 
     <ListView
         android:id="@+id/listViewSearchBB"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linearLayout4" />
+        android:layout_below="@+id/search" />
 
 
 </RelativeLayout>

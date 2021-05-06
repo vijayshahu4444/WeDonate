@@ -16,6 +16,12 @@ public class User {
         this.lname = lname;
     }
 
+    public User(String address, String fname, String lname) {
+        Address = address;
+        this.fname = fname;
+        this.lname = lname;
+    }
+
     public String getBlood_Group() {
         return Blood_Group;
     }

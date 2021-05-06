@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -32,6 +33,8 @@ public class Receipt extends AppCompatActivity {
     String name;
     Session session;
     Button yesbtn, nobtn;
+    private File pdfFile;
+    private String Name = null;
     private static final int PERMISSION_REQUEST_CODE = 200;
 
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy hh:mm a");
@@ -54,20 +57,24 @@ public class Receipt extends AppCompatActivity {
             public void onClick(View v) {
 
                 System.out.println(name);
+                ActivityCompat.requestPermissions(Receipt.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, PackageManager.PERMISSION_GRANTED);
                 printPDF();
             }
         });
-        if (checkPermission()) {
-            Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
-        } else {
-            requestPermission();
-        }
+
 
     }
 
 
     private void printPDF() {
-
+//        File docsfolder = new File(Environment.getExternalStorageDirectory()+"/Blood_Donation");
+//        if(!docsfolder.exists()){
+//            docsfolder.mkdir();
+//            Toast.makeText(this, "Created file path", Toast.LENGTH_SHORT).show();
+//        }
+        File file = new File(this.getExternalFilesDir("/"),"WeDonate_Certificate.pdf");
+        String pdfname = "blooddonate"+".pdf";
+        pdfFile = new File(file.getAbsolutePath(),pdfname);
         PdfDocument pdfDocument = new PdfDocument();
         Paint paint = new Paint();
         Paint forLine = new Paint();
@@ -103,48 +110,26 @@ public class Receipt extends AppCompatActivity {
         canvas.drawText("Thank you", canvas.getWidth() / 2, 320, paint);
 
         pdfDocument.finishPage(page);
-        //File file = new File(this.getExternalFilesDir("/"),"WeDonate_Certificate.pdf");
 
-        File file = new File(Environment.getExternalStorageDirectory(), "WeDonate_Cert.pdf");
+
+
 
         try {
             pdfDocument.writeTo(new FileOutputStream(file));
+            Toast.makeText(Receipt.this, "Certificate added in your Storage", Toast.LENGTH_LONG).show();
         } catch (IOException e) {
             e.printStackTrace();
         }
         pdfDocument.close();
 
 
-        Toast.makeText(Receipt.this, "Certificate added in your Storage", Toast.LENGTH_LONG).show();
 
 
-    }
-
-    private boolean checkPermission() {
-        int permission1 = ContextCompat.checkSelfPermission(getApplicationContext(), WRITE_EXTERNAL_STORAGE);
-        int permission2 = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
-        return permission1 == PackageManager.PERMISSION_GRANTED && permission2 == PackageManager.PERMISSION_GRANTED;
-    }
-
-    private void requestPermission() {
-        ActivityCompat.requestPermissions(this, new String[]{WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == PERMISSION_REQUEST_CODE) {
-            if (grantResults.length > 0) {
-                boolean writeStorage = grantResults[0] == PackageManager.PERMISSION_GRANTED;
-                boolean readStorage = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-
-                if (writeStorage && readStorage) {
-                    Toast.makeText(this, "Permission Granted..", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "Permission Denined.", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-            }
-        }
 
     }
+
+
+
+
+
 }
