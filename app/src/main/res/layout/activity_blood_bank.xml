@@ -12,38 +12,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/teal_700"
-        android:text="Admin Section"
+        android:text="Blood Storage"
         android:textAlignment="center"
         android:padding="5dp"
         android:textColor="@android:color/white"
         android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/one"
-        android:layout_below="@+id/AdminSec"
-        android:layout_width="wrap_content"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:text="The blood stores in the form of packets The capacity of 1 packet is 500 ml"/>
 
-    <TextView
-        android:id="@+id/two"
-        android:layout_below="@+id/one"
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Blood Packets"
-        android:textSize="15sp"
-        android:textStyle="bold"/>
+
+
     <ListView
         android:id="@+id/listViewBloodBanck"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/btnUpdate"
-        android:layout_below="@+id/two"/>
+        android:layout_below="@+id/AdminSec"/>
     <Button
         android:id="@+id/btnUpdate"
         android:layout_width="match_parent"

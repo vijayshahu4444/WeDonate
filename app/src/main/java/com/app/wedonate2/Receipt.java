@@ -62,6 +62,13 @@ public class Receipt extends AppCompatActivity {
             }
         });
 
+        nobtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Receipt.this,"Oops you not donated the blood.!",Toast.LENGTH_LONG).show();
+            }
+        });
+
 
     }
 
@@ -72,7 +79,11 @@ public class Receipt extends AppCompatActivity {
 //            docsfolder.mkdir();
 //            Toast.makeText(this, "Created file path", Toast.LENGTH_SHORT).show();
 //        }
+
+
         File file = new File(this.getExternalFilesDir("/"),"WeDonate_Certificate.pdf");
+
+
         String pdfname = "blooddonate"+".pdf";
         pdfFile = new File(file.getAbsolutePath(),pdfname);
         PdfDocument pdfDocument = new PdfDocument();

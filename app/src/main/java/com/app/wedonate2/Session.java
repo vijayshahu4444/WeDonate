@@ -16,9 +16,9 @@ public class Session {
     public static final String KEY_CITY = "AURANGABAD";
     public static final String KEY_BLOOD = "A +";
     public static final String KEY_DONATE = "YES";
-    public static final String KEY_NAME = "null";
-    public static final String KEY_lname = "";
-    public static final String KEY_Phone = "";
+    public static final String KEY_NAME = "a";
+    public static final String KEY_lname = "b";
+    public static final String KEY_Phone = "c";
 
 
     public Session(Context _context){

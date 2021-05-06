@@ -57,7 +57,6 @@
                 android:ems="10"
                 android:hint="phone"
                 android:inputType="text"
-                android:text="9999999999"
                 android:textSize="18dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,7 +77,6 @@
                 android:ems="10"
                 android:hint="Password"
                 android:inputType="textPassword"
-                android:text="9999999999"
                 android:textSize="18dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
