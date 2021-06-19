@@ -38,7 +38,6 @@
             android:layout_height="wrap_content"
             android:text="LName"
             android:layout_marginLeft="5dp"
-            android:visibility="invisible"
             android:textColor="@color/black"
             android:textSize="18sp" />
 
@@ -168,7 +167,59 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
 
+
+
     </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/layer5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layer4"
+        android:layout_alignParentLeft="true"
+        android:background="@color/background"
+        android:orientation="horizontal"
+        android:paddingBottom="2dp">
+
+        <TextView
+            android:id="@+id/textnum"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Mobile            |"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/num"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mobile"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+
+
+    </LinearLayout>
+
+
+
+
+
 
 
 </RelativeLayout>

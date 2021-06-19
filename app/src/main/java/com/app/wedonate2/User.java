@@ -2,24 +2,19 @@ package com.app.wedonate2;
 
 public class User {
 
-    private String Blood_Group, City, Address,fname,lname;
+    private String Blood_Group, City, Address,fname,lname,Number;
 
     public User(){
 
     }
 
-    public User(String blood_Group, String city, String address, String fname, String lname) {
+    public User(String blood_Group, String city, String address, String fname, String lname, String number) {
         Blood_Group = blood_Group;
         City = city;
         Address = address;
         this.fname = fname;
         this.lname = lname;
-    }
-
-    public User(String address, String fname, String lname) {
-        Address = address;
-        this.fname = fname;
-        this.lname = lname;
+        Number = number;
     }
 
     public String getBlood_Group() {
@@ -60,5 +55,13 @@ public class User {
 
     public void setLname(String lname) {
         this.lname = lname;
+    }
+
+    public String getNumber() {
+        return Number;
+    }
+
+    public void setNumber(String number) {
+        Number = number;
     }
 }

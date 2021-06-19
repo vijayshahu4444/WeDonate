@@ -33,7 +33,7 @@ public class T_Make_Request extends AppCompatActivity {
     private static String text, text2;
     SpinnerHelper helper;
     String phone, fname, lname;
-    EditText address;
+    EditText address,num;
     Session session;
 
 
@@ -44,6 +44,7 @@ public class T_Make_Request extends AppCompatActivity {
         setContentView(R.layout.activity_make__request);
         submit_req = findViewById(R.id.submit_req);
         address = findViewById(R.id.address);
+        num = findViewById(R.id.phoneNumber);
         helper = new SpinnerHelper();
         session = new Session(getApplicationContext());
         HashMap<String, String> userDetail = session.getUserDetailFromSesion();
@@ -116,6 +117,7 @@ public class T_Make_Request extends AppCompatActivity {
                 //get address from the helper
 
                 String Address = address.getText().toString().trim();
+                String Num = num.getText().toString().trim();
 
 
                 //push reqest into the firebase
@@ -128,6 +130,7 @@ public class T_Make_Request extends AppCompatActivity {
                         userdatamap.put("Blood_Group", text);
                         userdatamap.put("City", text2);
                         userdatamap.put("Address", Address);
+                        userdatamap.put("Number", Num);
                         userdatamap.put("fname", fname);
                         userdatamap.put("lname", lname);
                         reference.child("Blood_Request").child(phone).updateChildren(userdatamap).addOnCompleteListener(new OnCompleteListener<Void>() {

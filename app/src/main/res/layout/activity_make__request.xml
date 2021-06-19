@@ -111,11 +111,44 @@
 
         </LinearLayout>
 
+
+
+
+
+
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/input_layout"
+            android:id="@+id/input_layout1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/linearLayout4"
+            android:focusable="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:focusableInTouchMode="true">
+
+            <EditText
+                android:id="@+id/phoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Enter Mobile "
+                android:ems="10"
+                android:inputType="text"
+                android:textSize="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_layout1"
             android:focusable="true"
             android:layout_marginTop="10dp"
             android:layout_marginRight="15dp"
@@ -136,7 +169,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Submit Request"
-            android:layout_below="@+id/input_layout"
+            android:layout_below="@+id/input_layout2"
             android:layout_marginTop="30dp"
             android:backgroundTint="@color/teal_700"
             android:textColor="@color/white"

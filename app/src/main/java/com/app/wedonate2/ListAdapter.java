@@ -26,6 +26,8 @@ public class ListAdapter extends ArrayAdapter<User> {
         TextView tv3 = convertView.findViewById(R.id.city);
         TextView tv4 = convertView.findViewById(R.id.name2);
         TextView tv5 = convertView.findViewById(R.id.name3);
+        TextView tv6 = convertView.findViewById(R.id.num);
+
 
 
 
@@ -35,7 +37,7 @@ public class ListAdapter extends ArrayAdapter<User> {
         tv3.setText(user.getCity());
         tv4.setText(user.getFname());
         tv5.setText(user.getLname());
-        tv5.setVisibility(View.VISIBLE);
+        tv6.setText(user.getLname());
         return convertView;
     }
 
