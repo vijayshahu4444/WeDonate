@@ -37,7 +37,7 @@ public class ListAdapter extends ArrayAdapter<User> {
         tv3.setText(user.getCity());
         tv4.setText(user.getFname());
         tv5.setText(user.getLname());
-        tv6.setText(user.getLname());
+        tv6.setText(user.getNumber());
         return convertView;
     }
 
